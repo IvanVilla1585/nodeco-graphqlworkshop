@@ -1,18 +1,24 @@
 {
   "name": "graphql-nodeco",
   "version": "1.0.0",
-  "description": "",
+  "description": "graphql workshop",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon server.js"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "license": "MIT",
+  "author": "Ivan Darion Villa Ramirez <trezeguet55@gmail.com",
+  "repository": "git@github.com:IvanVilla1585/nodeco-graphqlworkshop.git",
   "dependencies": {
-    "apollo-server": "^2.2.2",
-    "graphql": "^14.0.2"
+    "apollo-server-express": "^2.2.2",
+    "express": "^4.16.4",
+    "graphql": "^14.0.2",
+    "graphql-subscriptions": "^1.0.0",
+    "lodash.merge": "^4.6.1",
+    "mongodb": "^3.1.10",
+    "mongoose": "^5.3.13",
+    "subscriptions-transport-ws": "^0.9.15"
   },
   "devDependencies": {
     "nodemon": "^1.18.6"
