@@ -1,5 +1,4 @@
 
-// const mongo = require('./db')
 const pubsub = require('../pubsub')
 
 const resolver = {
@@ -19,7 +18,7 @@ const resolver = {
       let result = {}
       try {
         result = await mongoDB.create('students', args.input)
-        pubsub.asyncIterator('studentCreate', result)
+        pubsub.asyncIterator('STUDENT_CREATED', result)
       } catch (err) {
         throw err
       }
@@ -29,7 +28,7 @@ const resolver = {
   Subscription: {
     studentCreate: {
       subscribe: () => {
-        return pubsub.asyncIterator('studentCreate')
+        return pubsub.asyncIterator('STUDENT_CREATED')
       }
     }
   }
