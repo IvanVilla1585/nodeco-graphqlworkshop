@@ -29,7 +29,6 @@ const resolver = {
   Subscription: {
     studentCreate: {
       subscribe: () => {
-        console.log('subscription')
         return pubsub.asyncIterator('studentCreate')
       }
     }
