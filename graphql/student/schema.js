@@ -43,7 +43,7 @@ const schema = `
   }
 
   type Subscription {
-    studentCreate(input: StudentCreateInput): Student
+    studentCreate: Student
   }
 `
 
