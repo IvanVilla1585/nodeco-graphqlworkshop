@@ -1,6 +1,6 @@
 
 const merge = require('lodash.merge')
-const { makeExecutableSchema } = require('apollo-server')
+const { makeExecutableSchema } = require('apollo-server-express')
 
 const schemaDirectives = require('./directives')
 const studentSchema =  require('./student/schema')
