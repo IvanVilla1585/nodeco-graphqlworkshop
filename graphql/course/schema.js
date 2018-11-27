@@ -5,7 +5,6 @@ const schema = `
     id: ID,
     name: String,
     price: Float
-    students: [Student]
   }
 
   input CourseCreateInput {
