@@ -1,3 +1,4 @@
+'use strict'
 
 const express = require('express')
 const { createServer } = require('http')
@@ -5,8 +6,13 @@ const { execute, subscribe } = require('graphql')
 const { ApolloServer } = require('apollo-server-express')
 const { SubscriptionServer } = require('subscriptions-transport-ws')
 
-const mongo = require('./db')
 const schema = require('./graphql')
+const config = require('./utils/config')
+const CourseConnector = require('./graphql/course/connector')
+const StudentConnector = require('./graphql/student/connector')
+
+const courseConnector = new CourseConnector(config.courseAPIUrl)
+const studentConnector = new StudentConnector(config.studentAPIUrl)
 
 const app = express()
 
@@ -16,7 +22,8 @@ const apolloServer = new ApolloServer({
   schema,
   dataSources: () => {
     return {
-      mongoDB: mongo
+      courseConnector,
+      studentConnector
     }
   }
 })
@@ -32,6 +39,6 @@ server.listen(4000, () => {
       schema,
     }, {
       server: server,
-      path: '/subscriptions',
+      path: '/graphql',
     });
 });
