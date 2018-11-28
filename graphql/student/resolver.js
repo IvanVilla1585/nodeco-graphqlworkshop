@@ -11,7 +11,7 @@ const resolver = {
         console.error(err)
         throw err
       }
-      return results
+      return results.data
     },
     async studentById(root, args, { dataSources: { studentConnector }}) {
       let results = []
@@ -21,7 +21,7 @@ const resolver = {
         console.error(err)
         throw err
       }
-      return results
+      return results.data
     }
   },
   Mutation: {
@@ -34,7 +34,7 @@ const resolver = {
         console.error(err)
         throw err
       }
-      return result
+      return result.data
     },
     async studentUpdate(root, args, { dataSources: { studentConnector }}) {
       let result = {}
@@ -44,7 +44,7 @@ const resolver = {
         console.error(err)
         throw err
       }
-      return result
+      return result.data
     },
     async studentDelete(root, args, { dataSources: { studentConnector }}) {
       let result = {}
@@ -54,7 +54,7 @@ const resolver = {
         console.error(err)
         throw err
       }
-      return result
+      return result.data
     }
   },
   Subscription: {
@@ -62,6 +62,21 @@ const resolver = {
       subscribe: () => {
         return pubsub.asyncIterator('STUDENT_CREATED')
       }
+    }
+  },
+  Student: {
+    async courses({ courses }, args, { dataSources: { cache } }) {
+      let results = []
+      if (!courses) {
+        return results
+      }
+      try {
+        const coursesCache = cache.get('courses')
+        results =  coursesCache.filter(d => courses.includes(d.id))
+      } catch (e) {
+        throw e
+      }
+      return results
     }
   }
 }

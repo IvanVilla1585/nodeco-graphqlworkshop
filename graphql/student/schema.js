@@ -15,7 +15,8 @@ const schema = `
     lastName: String @upper,
     email: String,
     average: Float,
-    status: STATUS
+    status: STATUS,
+    courses: [Course]
   }
 
   input StudentCreateInput {
@@ -28,7 +29,8 @@ const schema = `
   input StudentUpdateInput {
     name: String,
     lastName: String,
-    average: Float
+    average: Float,
+    courses: [ID]
   }
 
   type Query {

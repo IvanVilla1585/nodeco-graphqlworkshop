@@ -8,7 +8,7 @@
       } catch (err) {
         throw err
       }
-      return results
+      return results.data
     },
     async courseById(root, { id }, { dataSources: { courseConnector }}) {
       let results = []
@@ -17,7 +17,7 @@
       } catch (err) {
         throw err
       }
-      return results
+      return results.data
     }
   },
   Mutation: {
@@ -29,7 +29,7 @@
         console.error(err)
         throw err
       }
-      return result
+      return result.data
     },
     async courseUpdate(root, { id, input }, { dataSources: { courseConnector }}) {
       let result = {}
@@ -39,7 +39,7 @@
         console.error(err)
         throw err
       }
-      return result
+      return result.data
     },
     async courseDelete(root, { id }, { dataSources: { courseConnector }}) {
       let result = {}
@@ -49,7 +49,7 @@
         console.error(err)
         throw err
       }
-      return result
+      return result.data
     }
   }
  }
